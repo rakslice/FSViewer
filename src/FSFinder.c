@@ -144,7 +144,7 @@ FSCreateFinder(FSViewer *fsViewer)
 			       WMResizableWindowMask);
     attributes.window_level = WMNormalWindowLevel;
     attributes.extra_flags = GSFullKeyboardEventsFlag;
-    attributes.flags = (GSWindowStyleAttr | GSWindowLevelAttr |
+    attributes.flags = (GSWindowLevelAttr |
 			GSExtraFlagsAttr);
     WMSetWindowAttributes(finder->dpy, WMWidgetXID(finder->win),
 			  &attributes);

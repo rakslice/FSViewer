@@ -161,7 +161,7 @@ FSSetFSViewerTransientWindow(FSViewer *fsViewer, Window window)
     attributes.window_level = WMFloatingWindowLevel;
     attributes.extra_flags = GSFullKeyboardEventsFlag;
     attributes.flags =
-	(GSWindowStyleAttr | GSWindowLevelAttr | GSExtraFlagsAttr);
+	(GSWindowLevelAttr | GSExtraFlagsAttr);
     WMSetWindowAttributes(fsViewer->dpy, window, &attributes);
     WMAppAddWindow(fsViewer->wmContext, window);
 
@@ -189,7 +189,7 @@ FSAddWindow(FSViewer *fsViewer, Window window)
     attributes.window_level = WMNormalWindowLevel;
     attributes.extra_flags = GSFullKeyboardEventsFlag;
     attributes.flags =
-	(GSWindowStyleAttr | GSWindowLevelAttr | GSExtraFlagsAttr);
+	(GSWindowLevelAttr | GSExtraFlagsAttr);
     WMSetWindowAttributes(fsViewer->dpy, window, &attributes);
     WMAppAddWindow(fsViewer->wmContext, window);
 }
@@ -216,7 +216,7 @@ FSSetFSViewerConfirmWindow(FSViewer *fsViewer, Window window)
     attributes.window_level = WMFloatingWindowLevel;
     attributes.extra_flags = GSFullKeyboardEventsFlag;
     attributes.flags =
-	(GSWindowStyleAttr | GSWindowLevelAttr | GSExtraFlagsAttr);
+	(GSWindowLevelAttr | GSExtraFlagsAttr);
     WMSetWindowAttributes(fsViewer->dpy, window, &attributes);
     WMAppAddWindow(fsViewer->wmContext, window);
 }
@@ -474,8 +474,10 @@ main(int argc, char **argv)
 #ifdef ENABLE_NLS
     if (getenv("NLSPATH"))
       bindtextdomain("FSViewer", getenv("NLSPATH"));
-    else
+    else {
       bindtextdomain("FSViewer", LOCALEDIR);
+      bind_textdomain_codeset("FSViewer", "UTF-8");
+    }
     textdomain("FSViewer");
 
     if (!XSupportsLocale()) {
