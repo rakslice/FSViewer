@@ -38,30 +38,27 @@ dnl Additional "default" items
 #CFLAGS="$CFLAGS -I/usr/X11/include"
 #LDFLAGS="$LDFLAGS -L/usr/X11/lib"
 
+# While I'm troubleshooting missing declarations don't allow implicit functions
 CFLAGS="$CFLAGS -Werror-implicit-function-declaration"
 
-dnl Check for get-wraster-flags
-AC_CHECK_PROG(GET_WRASTER_FLAGS, get-wraster-flags, get-wraster-flags)
-if test "$GET_WRASTER_FLAGS" != ""; then
-	dnl CFLAGS first
-        c_flags=`$GET_WRASTER_FLAGS --cflags`
-        echo $c_flags
-        CFLAGS="$CFLAGS $c_flags"
+dnl use pkg-config for wraster instead of the old get script
+PKG_CHECK_MODULES(wrlib, wrlib)
 
-	dnl LDFLAGS next
-        ld_flags=`$GET_WRASTER_FLAGS --ldflags`
-	echo $ld_flags
-        LDFLAGS="$LDFLAGS $ld_flags"
-	
-	dnl And finally libs
-        libs_flags=`$GET_WRASTER_FLAGS --libs`
-	echo $libs_flags
-        LIBS="$LIBS $libs_flags"
-	
-else
+CFLAGS="$CFLAGS $wrlib_CFLAGS"
+LDFLAGS="$LDFLAGS $wrlib_LDFLAGS"
+LIBS="$LIBS $wrlib_LIBS"
 
-	AC_MSG_ERROR("Danger Will Robinson: Unable to find get-wraster-flags in $PATH variable.");
-fi
+PKG_CHECK_MODULES(WUtil, WUtil)
+
+CFLAGS="$CFLAGS $WUtil_CFLAGS"
+LDFLAGS="$LDFLAGS $WUtil_LDFLAGS"
+LIBS="$LIBS $WUtil_LIBS"
+
+PKG_CHECK_MODULES(xpm, xpm)
+
+CFLAGS="$CFLAGS $xpm_CFLAGS"
+LDFLAGS="$LDFLAGS $xpm_LDFLAGS"
+LIBS="$LIBS $xpm_LIBS"
 
 AC_CHECK_LIB(Xmu, XmuClientWindow)
 
