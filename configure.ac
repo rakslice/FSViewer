@@ -38,6 +38,8 @@ dnl Additional "default" items
 #CFLAGS="$CFLAGS -I/usr/X11/include"
 #LDFLAGS="$LDFLAGS -L/usr/X11/lib"
 
+CFLAGS="$CFLAGS -Werror-implicit-function-declaration"
+
 dnl Check for get-wraster-flags
 AC_CHECK_PROG(GET_WRASTER_FLAGS, get-wraster-flags, get-wraster-flags)
 if test "$GET_WRASTER_FLAGS" != ""; then
