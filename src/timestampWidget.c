@@ -299,7 +299,7 @@ static int InitClockResources(TimeStamp *timestamp)
     return (0);
 }
 
-
+#define COLOR_STR_LEN 23
 
 /***********************************************************************
 Name:		GetXPM
@@ -316,9 +316,9 @@ static int GetXPM(TimeStamp *timestamp)
     Display     *dpy = timestamp->view->screen->display;
     Colormap    cmap;
     XColor      col;
-    char        brightLED[22];
-    char        darkLED[22];
-    char        greyStr[22];
+    char        brightLED[COLOR_STR_LEN];
+    char        darkLED[COLOR_STR_LEN];
+    char        greyStr[COLOR_STR_LEN];
     int         greyR = 0, greyG = 0, greyB = 0;
 
     /* Get the default colourmap ID for this screen. */
@@ -332,14 +332,14 @@ static int GetXPM(TimeStamp *timestamp)
     }
 
     /* Replace the 'bright' colour in the LED pixmap with our new one. */
-    sprintf(brightLED, ".      c #%04X%04X%04X", col.red, col.green, col.blue);
+    snprintf(brightLED, COLOR_STR_LEN, ".      c #%04X%04X%04X", col.red, col.green, col.blue);
     led_xpm[2] = brightLED;
 
     /* Now make a darker version and do the same. */
     col.red   = (col.red / 10) * 3;
     col.green = (col.green / 10) * 3;
     col.blue  = (col.blue / 10) * 3;
-    sprintf(darkLED, "X      c #%04X%04X%04X", col.red, col.green, col.blue);
+    snprintf(darkLED, COLOR_STR_LEN, "X      c #%04X%04X%04X", col.red, col.green, col.blue);
     led_xpm[3] = darkLED;
 
 
@@ -354,7 +354,7 @@ static int GetXPM(TimeStamp *timestamp)
     greyG >>= 8;
     greyB >>= 8;
     
-    sprintf(greyStr, ".      c #%02X%02X%02X", greyR, greyG, greyB);
+    snprintf(greyStr, COLOR_STR_LEN, ".      c #%02X%02X%02X", greyR, greyG, greyB);
     clk_xpm[1] = greyStr;
     year_xpm[1] = greyStr;
 
@@ -1041,7 +1041,7 @@ static void ASTwentyFour(TimeStamp *timestamp, struct tm *clk)
 }
 
 
-
+#define YEAR_STR_LEN 5
 
 /***********************************************************************
 	Name:		RenderASClock
@@ -1057,7 +1057,7 @@ static void RenderASClock(TimeStamp *timestamp)
     Display     *dpy = timestamp->view->screen->display;
     struct tm   *clk;
     int         year;
-    char        yearStr[5];
+    char        yearStr[YEAR_STR_LEN];
     int         digit, i;
     int         yearWidth, yearOffset;
 
@@ -1161,7 +1161,7 @@ static void RenderASClock(TimeStamp *timestamp)
     else
     {
         /* Create a string of the year. */
-        sprintf(yearStr, "%04d", year);
+        snprintf(yearStr, YEAR_STR_LEN, "%04d", year);
         
         /* Calculate the width of the year label in pixels. */
         yearWidth = 0;
