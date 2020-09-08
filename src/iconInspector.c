@@ -3,6 +3,10 @@
 #include "FSViewer.h"
 #include "FSUtils.h"
 
+#include "filebrowser.h"
+#include "FSFileButton.h"
+#include "FSFileView.h"
+
 #define WIDTH               272
 #define HEIGHT              272
 #define LABEL_HEIGHT         16
@@ -193,7 +197,7 @@ buttonClick(WMWidget *self, void *data)
     {
 	storeData(panel);
 	WMSetButtonEnabled(panel->revertBtn, True);
-	FSUpdateFileViewPath(FSGetFSViewerCurrentView(panel->app));
+	FSUpdateFileViewPath(FSGetFSViewerCurrentView(panel->app), FileSync, NULL, NULL);
     }
     else {
       WMRunAlertPanel(panel->scr, NULL,

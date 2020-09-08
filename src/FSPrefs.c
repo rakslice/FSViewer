@@ -6,6 +6,9 @@
 #include "FSUtils.h"
 #include "FSPanel.h"
 #include "FSPrefs.h"
+#include "filebrowser.h"
+#include "FSFileButton.h"
+#include "FSFileView.h"
 
 #define  WIN_WIDTH  572
 #define  WIN_HEIGHT 322

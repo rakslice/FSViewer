@@ -5,6 +5,7 @@
 #include "FSViewer.h"
 #include "FSUtils.h"
 
+#include "misc.h"
 
 #define WIDTH               272
 #define HEIGHT              272

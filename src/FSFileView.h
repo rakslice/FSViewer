@@ -60,4 +60,6 @@ char       *FSGetFileViewFilter(FSFileView *fView);
 void        FSSetFileViewPath(FSFileView *fileView, char *path);
 void        FSSetFileViewMode(FSFileView *fView, FSFileViewType mode);
 
+void        FSUpdateFileViewPath(FSFileView *fileView, FileAction action, FileInfo *src, FileInfo *dest);
+
 #endif

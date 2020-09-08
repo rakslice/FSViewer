@@ -37,4 +37,6 @@ void        FSSetPathViewColumnContents(FSPathView *pvPtr, int column,
 					char *pathname, int isBranch, 
 					int backlight);
 
+short       FSGetPathViewLastClicked(FSPathView *pvPtr);
+
 #endif

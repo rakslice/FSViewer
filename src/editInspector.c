@@ -4,7 +4,9 @@
 #include "FSUtils.h"
 
 /* for: scr->normalFont */
-#include <WINGs/WINGsP.h> 
+#include <WINGs/WINGsP.h>
+
+#include "misc.h"
 
 #define WIDTH               272
 #define HEIGHT              272

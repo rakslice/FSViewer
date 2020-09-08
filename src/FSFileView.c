@@ -18,6 +18,7 @@
 #include "FSFileView.h"
 #include "DnD.h"
 #include "FSUtils.h"
+#include "FSMenu.h"
 
 #define  MIN_UPPER_HEIGHT  90
 #define  MIN_LOWER_HEIGHT  200

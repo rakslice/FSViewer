@@ -60,6 +60,8 @@ typedef unsigned long ulong;
 #include "xpm/backing2.xpm"
 #include "xpm/transparent.xpm"
 
+#include "misc.h"
+
 #if defined(__FreeBSD__)
 #define DF_COMMAND "df"
 #else
